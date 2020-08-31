@@ -34,8 +34,9 @@ constructor(private formBuilder: FormBuilder,private newform:FormService)
         onSubmit(user)
         { 
           this.newform.onSub(user).subscribe(data=>{
+            this.form.reset();
             console.log('successfull',data);
-           //alert('Form Submitted succesfully!')
+           alert('Form Submitted succesfully!')
           },
           error=>{
             console.log('error occured',error);
