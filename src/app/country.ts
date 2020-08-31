@@ -1,5 +1,5 @@
-export class Country{
-    public countryID:Number;
-    public city:string;
+ export interface  Country{
+     countryID:Number;
+     city:string;
     
 }

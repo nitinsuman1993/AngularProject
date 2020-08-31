@@ -1,14 +1,59 @@
-<!-- <h1>Angular 10 FormData (multipart/data-form) Example</h1>
-<div>
-    <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()">      
-      <div>
-        <input type="file" name="profile" (change)="onFileSelect($event)" />
-      </div>
-      <div>
-        <button type="submit">Upload</button>
-      </div>
-    </form>
-  </div> -->
+
+
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+ </mat-toolbar>
+
+  
+<div class="center">
+  <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value)" >
+  <mat-form-field appearance="standard">
+    <mat-label>URL</mat-label>
+    <input  id="URL" matInput placeholder="Placeholder" formControlName="URL" required>
+    <mat-icon matSuffix>language</mat-icon>
+    <mat-hint>www.Google.com</mat-hint>
+    <mat-error *ngif="Url.invalid" class="alert alert-danger"> Required</mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="Password" required>
+    <mat-icon matSuffix>https</mat-icon>
+    <mat-hint>Password</mat-hint>
+    <mat-error>Required</mat-error>
+  </mat-form-field><br>
+
+
+  
+  <mat-form-field appearance="standard">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="Name">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Name</mat-hint>
+  </mat-form-field><br><br>
+
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite city </mat-label>
+    <mat-select id="country" formControlName="Country">
+      <mat-option *ngFor="let cou of country" [value]="cou.countryID">
+        {{cou.city}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field><br>
+ 
+
+  <button mat-raised-button color="primary">Primary</button>  
+</form>
+</div>
+<!-- 
   <header>
     <p>Cybage <br>
     <a href="www.cybage.com">www.cybage.com</a></p>
@@ -16,12 +61,11 @@
   
 <div class="center">
   <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value)" >
-    <label >Enter Url</label><br>
+    <label >EnterUrl</label><br>
     <input name="firstname" formControlName="firstname" required><br>
     <label >Password</label><br>
     <input name="name" formControlName="name"><br>
     <label >Name</label><br>
-    <input name="lastname" formControlName="lastname"><br>
     <label >Select Option</label> <br>
     <select id="country" formControlName="country">
       <option *ngFor="let coun of country" [ngValue]="coun.countryID"  > 
@@ -31,4 +75,4 @@
       <button type="submit">Save</button>
    </form>
   </div>
-  
+   -->
