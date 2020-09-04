@@ -1,6 +1,6 @@
 
-
 <mat-toolbar color="primary">
+        
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
@@ -10,34 +10,36 @@
       <mat-icon>favorite</mat-icon>
     </button>
  </mat-toolbar>
-
-  
-<div class="center">
-  <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value)" >
+ 
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="30">
+    <mat-toolbar><mat-icon class="icon">account_circle</mat-icon></mat-toolbar>
+  <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value) " fxLayoutAlign="stretch" fxLayout="column">
   <mat-form-field appearance="standard">
     <mat-label>URL</mat-label>
-    <input  id="URL" matInput placeholder="Placeholder" formControlName="URL" required>
+    <!-- <span matPrefix>https://</span> -->
+    <input type="text"  matInput placeholder="www.google.com" formControlName="URL" >
+    <mat-error *ngIf="form.get('URL').touched && form.get('URL').invalid" >url is required</mat-error>
+    <mat-error *ngIf="form.get('URL').value && form.get('URL').touched && form.get('URL').invalid">Invalid URL Pattern </mat-error>
     <mat-icon matSuffix>language</mat-icon>
-    <mat-hint>www.Google.com</mat-hint>
   </mat-form-field><br>
 
   <mat-form-field appearance="standard">
-    <mat-label>Password</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="Password" required>
-    <mat-icon matSuffix>https</mat-icon>
-    <mat-hint>Password</mat-hint>
-    <mat-error>Required</mat-error>
+    <mat-label>Enter Your Password</mat-label>
+    <input matInput  placeholder="Password" formControlName="Password" required>
+    
+    <mat-icon matSuffix>https</mat-icon> 
+     <mat-hint>Password</mat-hint> 
+    <mat-error *ngIf=" form.get('Password').touched"> Password please!!!</mat-error>
   </mat-form-field><br>
-
-
   
   <mat-form-field appearance="standard">
     <mat-label>Name</mat-label>
-    <input matInput placeholder="Placeholder" formControlName="Name">
+    <input matInput placeholder="Enter Name" formControlName="Name" >
+    
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Name</mat-hint>
-  </mat-form-field><br><br>
-
+    
+  </mat-form-field><br>
   
   <mat-form-field appearance="fill">
     <mat-label>Favorite city </mat-label>
@@ -47,31 +49,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field><br>
- 
-
-  <button mat-raised-button color="primary">Primary</button>  
-</form>
-</div>
-<!-- 
-  <header>
-    <p>Cybage <br>
-    <a href="www.cybage.com">www.cybage.com</a></p>
-  </header>
-  
-<div class="center">
-  <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value)" >
-    <label >EnterUrl</label><br>
-    <input name="firstname" formControlName="firstname" required><br>
-    <label >Password</label><br>
-    <input name="name" formControlName="name"><br>
-    <label >Name</label><br>
-    <label >Select Option</label> <br>
-    <select id="country" formControlName="country">
-      <option *ngFor="let coun of country" [ngValue]="coun.countryID"  > 
-        {{coun.city}}  
-      </option>
-    </select><br><br>
-      <button type="submit">Save</button>
-   </form>
-  </div>
-   -->
+   <button [disabled] ="form.invalid"  mat-raised-button color="primary" >Save</button>  
+  </form>
+</mat-card>
+</div> 
