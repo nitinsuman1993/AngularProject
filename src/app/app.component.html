@@ -1,6 +1,4 @@
-
-<mat-toolbar color="primary">
-        
+<mat-toolbar color="primary">     
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
@@ -14,10 +12,9 @@
 <div fxLayoutAlign="center center" fxFlexFill>
   <mat-card fxFlex="30">
     <mat-toolbar><mat-icon class="icon">account_circle</mat-icon></mat-toolbar>
-  <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value) " fxLayoutAlign="stretch" fxLayout="column">
+  <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value,fd)" fxLayoutAlign="stretch" fxLayout="column" #fd="ngForm">
   <mat-form-field appearance="standard">
     <mat-label>URL</mat-label>
-    <!-- <span matPrefix>https://</span> -->
     <input type="text"  matInput placeholder="www.google.com" formControlName="URL" >
     <mat-error *ngIf="form.get('URL').touched && form.get('URL').invalid" >url is required</mat-error>
     <mat-error *ngIf="form.get('URL').value && form.get('URL').touched && form.get('URL').invalid">Invalid URL Pattern </mat-error>
@@ -26,9 +23,8 @@
 
   <mat-form-field appearance="standard">
     <mat-label>Enter Your Password</mat-label>
-    <input matInput  placeholder="Password" formControlName="Password" required>
-    
-    <mat-icon matSuffix>https</mat-icon> 
+    <input matInput [type]="hide?'Password':'text'" placeholder="Password" formControlName="Password" required>
+    <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
      <mat-hint>Password</mat-hint> 
     <mat-error *ngIf=" form.get('Password').touched"> Password please!!!</mat-error>
   </mat-form-field><br>
@@ -48,8 +44,10 @@
         {{cou.city}}
       </mat-option>
     </mat-select>
-  </mat-form-field><br>
-   <button [disabled] ="form.invalid"  mat-raised-button color="primary" >Save</button>  
+  </mat-form-field>
+  
+   <button class="btn" (click)="form.reset()"  mat-raised-botton color="accent">Reset</button> <br>
+   <button [disabled] ="form.invalid" (click)="openDialog()"  mat-raised-button color="primary" >Save</button>  
   </form>
 </mat-card>
 </div> 

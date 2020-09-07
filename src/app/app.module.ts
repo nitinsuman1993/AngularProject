@@ -16,16 +16,18 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatDialogModule} from '@angular/material/dialog';
+import { BoxComponentComponent } from './box-component/box-component.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+    BoxComponentComponent,
+    DialogComponent
   ],
   imports: [
-    
     MatDialogModule,
     FlexLayoutModule,
     HttpClientModule,
@@ -48,6 +50,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

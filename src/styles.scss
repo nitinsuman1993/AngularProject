@@ -18,6 +18,8 @@
      warn: $app-warn,  
    )
  ));
+
+
  
  @include angular-material-theme($my-theme);
 
@@ -26,6 +28,14 @@
 
 html, body { height: 100%; }
 
+.btn{
+  color: black;
+  
+  font: outline;
+  font-size-adjust: inherit;
+  background-color: lightseagreen;
+  
+}
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;  
