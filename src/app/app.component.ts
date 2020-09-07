@@ -5,6 +5,7 @@ import {FormService} from './form.service';
 import { IForm } from './data';
 import {MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -53,7 +54,7 @@ onSubmit(user, formDirec: FormGroupDirective)
    this.form.reset();
    this.form.setErrors(null);
    this.newform.onSub(user).subscribe(data => {
-   console.log('successfull', data);
+   console.log('successfull', data || JSON);
    },
     error => {
     console.log('error occured', error);

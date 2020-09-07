@@ -15,24 +15,29 @@
   <form [formGroup] = "form" (ngSubmit) = "onSubmit(form.value,fd)" fxLayoutAlign="stretch" fxLayout="column" #fd="ngForm">
   <mat-form-field appearance="standard">
     <mat-label>URL</mat-label>
-    <input type="text"  matInput placeholder="www.google.com" formControlName="URL" >
-    <mat-error *ngIf="form.get('URL').touched && form.get('URL').invalid" >url is required</mat-error>
+    <input type="text"  matInput  formControlName="URL"  required>
+    <mat-hint>www.cybage.com</mat-hint>
+    <mat-error *ngIf="form.get('URL').touched && form.get('URL').invalid" >URL is Required</mat-error>
     <mat-error *ngIf="form.get('URL').value && form.get('URL').touched && form.get('URL').invalid">Invalid URL Pattern </mat-error>
     <mat-icon matSuffix>language</mat-icon>
   </mat-form-field><br>
 
   <mat-form-field appearance="standard">
     <mat-label>Enter Your Password</mat-label>
-    <input matInput [type]="hide?'Password':'text'" placeholder="Password" formControlName="Password" required>
+    <!-- <input matInput [type]="hide?'Password':'text'" placeholder="Password" formControlName="Password" required>
     <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> 
-     <mat-hint>Password</mat-hint> 
+     <mat-hint>Password</mat-hint>  -->
+     <input matInput [type]="hide ? 'password' : 'text'"  formControlName="Password" required>  
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
     <mat-error *ngIf=" form.get('Password').touched"> Password please!!!</mat-error>
   </mat-form-field><br>
   
   <mat-form-field appearance="standard">
     <mat-label>Name</mat-label>
-    <input matInput placeholder="Enter Name" formControlName="Name" >
-    
+    <input matInput formControlName="Name" required>
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     
   </mat-form-field><br>
