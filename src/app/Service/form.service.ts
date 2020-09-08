@@ -1,4 +1,4 @@
-import { IForm } from './data';
+import { IForm } from '../data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -7,11 +7,11 @@ import { Injectable } from '@angular/core';
 })
 
 export class FormService {
-  private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') }
+  private options = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
 
   constructor(public http: HttpClient) { }
 
    onSub(user: IForm){
-      return this.http.post<IForm>('http://localhost:3000/form',user);
+      return this.http.post<IForm>('http://localhost:3000/form', user);
    }
 }
